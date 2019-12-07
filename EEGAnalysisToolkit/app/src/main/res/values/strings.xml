@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">EEGAnalysisToolkit</string>
+    <string name="please_login">Please login</string>
+    <string name="brain">Brain</string>
+    <string name="registration">registration</string>
+    <string name="login">login</string>
+    <string name="txtv2Auth">Authenticating...</string>
+    <string name="blankSpaces">Please fill in blank spaces</string>
+    <string name="signErr">Account not found</string>
+    <string name="register">Register</string>
+    <string name="doctor">Doctor</string>
+    <string name="patient">Patient</string>
+    <string name="user_type">Please select the user type</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="user_gender">Please select your gender</string>
+    <string name="username">Username</string>
+    <string name="age">Age</string>
+    <string name="city">City</string>
+    <string name="social_number_id">Social number id</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Mobile phone number</string>
+    <string name="email">Email</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="please_register">Please register</string>
+</resources>
