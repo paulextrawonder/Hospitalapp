@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    tools:context=".Register">
+    android:layout_width="match_parent"
+    android:background="#00e5ff"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    android:gravity="center"
+
+    android:marginLeft="30dp"
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
+
+        <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="Please register" />
+
+
+        <EditText
+        android:id="@+id/editText5"
+        android:layout_marginLeft="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+android:hint="Enter firstname"
+        android:text="First name" />
+        <EditText
+        android:layout_marginLeft="90dp"
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+            android:hint="Enter last name"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Last name" />
+
+        <EditText
+        android:layout_marginLeft="90dp"
+        android:text="Email"
+            android:hint="Enter email"
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="textEmailAddress"/>
+
+
+        <EditText
+        android:layout_marginLeft="90dp"
+        android:text="Mobile phone number"
+        android:hint="Enter mobile phone number"
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
+        android:layout_marginLeft="90dp"
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Enter password"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="Password"
+        />
+    <EditText
+        android:layout_marginLeft="90dp"
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Confirm password"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="Confirm  password"
+        />
+
+
+
+
+
+    <EditText
+        android:layout_marginLeft="90dp"
+    android:text="Social number id"
+        android:hint="Enter social id number"
+    android:id="@+id/editText8"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:gravity="center"
+    android:ems="10"
+    android:inputType="numberDecimal" />
+    <EditText
+        android:layout_marginLeft="90dp"
+        android:text="City"
+        android:id="@+id/editText9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+    <EditText
+        android:layout_marginLeft="90dp"
+        android:hint="Enter the age"
+        android:text="Age"
+        android:id="@+id/editText10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="phone" />
+    <EditText
+        android:layout_marginLeft="90dp"
+        android:text="Username"
+        android:hint="Enter username"
+        android:id="@+id/editText11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="Please selecter a gender" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+android:id="@+id/genderu"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content" >
+
+
+            <RadioButton
+                android:layout_marginLeft="90dp"
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <RadioButton
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="70dp"
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:layout_weight="1"
+
+                android:text="Female" />
+
+
+    </RadioGroup>
+    <TextView
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="Please select the user type" />
+
+    <RadioGroup
+        android:id="@+id/usertype"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content" >
+
+
+        <RadioButton
+            android:layout_marginLeft="90dp"
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="Patient" />
+
+        <RadioButton
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+
+            android:text="Doctor" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:gravity="center"
+        android:id="@+id/button"
+        android:background="@color/colorAccent"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register" />
+     </LinearLayout>
+
+</ScrollView>
