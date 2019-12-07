@@ -71,7 +71,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
     private Uri filePath;
 
     //firebase storage reference
-    private StorageReference storageReference;
+    private FirebaseStorage storageReference;
 
 
     @Override
@@ -89,7 +89,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         buttonUpload.setOnClickListener(this);
 
         //getting firebase storage reference
-        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance();
         mLogout = (Button) findViewById(R.id.logout);
 
 
@@ -108,7 +108,6 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
                 return;
             }
         });
-        storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
         //ChooseButton = (Button) findViewById(R.id.ButtonChooseImage);
        // UploadButton = (Button) findViewById(R.id.ButtonUploadImage);
@@ -262,7 +261,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
     }
     private void showFileChooser() {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("text/plain");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
@@ -287,8 +286,8 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading");
             progressDialog.show();
-
-            StorageReference riversRef = storageReference.child("images/pic.jpg");
+            StorageReference reference = storageReference.getReference();
+            StorageReference riversRef = reference.child("images/pic.jpg");
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -314,12 +313,18 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        public void onProgress(final UploadTask.TaskSnapshot taskSnapshot) {
                             //calculating progress percentage
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
 
-                            //displaying percentage in progress dialog
-                            progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                    //displaying percentage in progress dialog
+                                    progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                                }
+                            });
+
                         }
                     });
         }
