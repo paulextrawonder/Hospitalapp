@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:maxLines="1"
-    tools:context=".Register">
+    tools:context=".activities.Register">
 
 
     <TextView

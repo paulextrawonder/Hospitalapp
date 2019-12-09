@@ -1,4 +1,4 @@
-package com.example.eeganalysistoolkit;
+package com.example.eeganalysistoolkit.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.eeganalysistoolkit.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 
 import android.view.View;
@@ -20,8 +21,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,7 +34,6 @@ public class Register extends AppCompatActivity {
     protected RadioGroup usertype;
     FirebaseAuth auth;
     CollectionReference reference;
-    //  private FirebaseAuth mAuth;
     protected Button register;
     RadioButton selectedRadioButton, selectedRadioButton1;
 
@@ -162,22 +160,14 @@ public class Register extends AppCompatActivity {
                             hashMap.put("firstaname", firstname);
                             hashMap.put("lname", lname);
                             hashMap.put("age", age);
-                            //hashMap.put("password", password);
-                            //hashMap.put("passwordconfirm", passwordconfirm);
                             hashMap.put("city", city);
                             hashMap.put("mobilephone", mobilephoneno);
                             hashMap.put("socialNumberId", socialNumberId);
                             hashMap.put("gender", genderu);
                             hashMap.put("usertype", usertype);
 
-                            /*reference.setValue(hashMap);
-                            Intent intent=new Intent(Register.this,MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();*/
 
-
-                            reference.document(usertype).collection("profile").document().set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            reference.document(usertype).collection("Profiles").document().set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundforandroid"
     android:orientation="vertical"
-    tools:context=".AdministratorDashboard">
+    tools:context=".activities.AdministratorDashboard">
 
 
     <androidx.appcompat.widget.Toolbar

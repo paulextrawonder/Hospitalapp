@@ -1,4 +1,4 @@
-package com.example.eeganalysistoolkit;
+package com.example.eeganalysistoolkit.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.eeganalysistoolkit.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DoctorDashboard extends AppCompatActivity {
+public class AdministratorDashboard extends AppCompatActivity {
     private Button mLogout;
     // mLogout = (Button) findViewById(R.id.logout);
 
@@ -22,7 +23,6 @@ public class DoctorDashboard extends AppCompatActivity {
         mLogout = (Button) findViewById(R.id.logout);
 
 
-
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +31,7 @@ public class DoctorDashboard extends AppCompatActivity {
                 disconnectDriver();
 
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(DoctorDashboard.this, MainActivity.class);
+                Intent intent = new Intent(AdministratorDashboard.this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 return;
@@ -39,25 +39,17 @@ public class DoctorDashboard extends AppCompatActivity {
         });
 
 
-
-
-
-
-
     }
 
-    private void disconnectDriver(){
+    private void disconnectDriver() {
         // LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("doctorsAvailable");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("adminsAvailable");
 
         //  GeoFire geoFire = new GeoFire(ref);
         //  geoFire.removeLocation(userId);
     }
 
 
-
-
-
-
 }
+

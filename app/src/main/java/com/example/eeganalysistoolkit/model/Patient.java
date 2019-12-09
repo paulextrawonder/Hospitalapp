@@ -1,4 +1,4 @@
-package com.example.eeganalysistoolkit;
+package com.example.eeganalysistoolkit.model;
 
 public class Patient {
     private String id;

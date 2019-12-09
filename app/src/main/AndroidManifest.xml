@@ -18,23 +18,23 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.UserListActivity"></activity>
         <activity android:name=".activities.ChatActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DoctorDashboard" />
-        <activity android:name=".PatientDashboard" />
-        <activity android:name=".AdministratorDashboard" />
-        <activity android:name=".AdministratorLoginActivity" />
-        <activity android:name=".CustomerLoginActivity" />
-        <activity android:name=".DriverLoginActivity" />
-        <activity android:name=".Register" />
-        <activity android:name=".Admin" />
-        <activity android:name=".Patient" />
-        <activity android:name=".Doctor" />
+        <activity android:name=".activities.DoctorDashboard" />
+        <activity android:name=".activities.PatientDashboard" />
+        <activity android:name=".activities.AdministratorDashboard" />
+        <activity android:name=".activities.AdministratorLoginActivity" />
+        <activity android:name=".activities.CustomerLoginActivity" />
+        <activity android:name=".activities.DriverLoginActivity" />
+        <activity android:name=".activities.Register" />
+        <activity android:name=".model.Admin" />
+        <activity android:name=".model.Patient" />
+        <activity android:name=".model.Doctor" />
     </application>
 
 </manifest>

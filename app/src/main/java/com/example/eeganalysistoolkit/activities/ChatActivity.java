@@ -28,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class ChatActivity extends AppCompatActivity {
 
     private CollectionReference datasRefChat;
-    private CollectionReference datasRefUser ;
+    private CollectionReference datasRefUser;
     private CollectionReference dataToken;
     private ChatAdapter chatAdapter;
     private RecyclerView mChatRecycler;
@@ -80,14 +80,15 @@ public class ChatActivity extends AppCompatActivity {
         super.onStop();
         chatAdapter.stopListening();
     }
+
     public void sendMessageClick(View view) {
-        EditText editText  = findViewById(R.id.writeMessage);
+        EditText editText = findViewById(R.id.writeMessage);
         String message = editText.getText().toString();
         editText.setText("");
         FirebaseHelper helper = new FirebaseHelper();
 
-        Chat chat = new Chat(message,user.getUid(),"receiverId");
-        if(helper.sendMessageChat(chat,datasRefChat)){
+        Chat chat = new Chat(message, user.getUid(), "receiverId");
+        if (helper.sendMessageChat(chat, datasRefChat)) {
             //sendNotif(message);
         }
 
