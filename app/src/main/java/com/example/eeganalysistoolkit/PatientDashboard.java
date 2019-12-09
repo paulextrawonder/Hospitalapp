@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.eeganalysistoolkit.activities.UserListActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,7 +53,6 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
 
     // Root Database Name for Firebase Database.
     String Database_Path = "All_Image_Uploads_Database";
-    Button ChooseButton, UploadButton;
     EditText ImageName ;
     ImageView SelectImage;
     Uri FilePathUri;
@@ -92,6 +92,15 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         storageReference = FirebaseStorage.getInstance();
         mLogout = (Button) findViewById(R.id.logout);
 
+
+        Button chatButton = findViewById(R.id.chat_button);
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatIntent = new Intent(PatientDashboard.this, UserListActivity.class);
+                startActivity(chatIntent);
+            }
+        });
 
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,6 +279,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
+
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
@@ -287,7 +297,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
             progressDialog.setTitle("Uploading");
             progressDialog.show();
             StorageReference reference = storageReference.getReference();
-            StorageReference riversRef = reference.child("images/pic.jpg");
+            StorageReference riversRef = reference.child("EDFfile/"+filePath.getLastPathSegment()+".edf");
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -321,7 +331,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
                                 public void run() {
                                     final double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                                     //displaying percentage in progress dialog
-                                    progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                                    progressDialog.setMessage("Uploaded " + ((int) progress) + " %");
                                 }
                             });
 
