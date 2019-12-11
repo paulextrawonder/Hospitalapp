@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
-    protected EditText username, firstname, lname, age, password, passwordconfirm, city, mobilephoneno, socialNumberId, email;
+    protected EditText username, firstName, lastName, age, password, passwordconfirm, city, mobilephoneno, socialNumberId, email;
     protected RadioGroup genderu;
     protected RadioGroup usertype;
     FirebaseAuth auth;
@@ -42,8 +42,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         auth = FirebaseAuth.getInstance();
-        firstname = (EditText) findViewById(R.id.editText5);
-        lname = (EditText) findViewById(R.id.editText6);
+        firstName = (EditText) findViewById(R.id.editText5);
+        lastName = (EditText) findViewById(R.id.editText6);
         age = (EditText) findViewById(R.id.editText10);
         password = (EditText) findViewById(R.id.editText4);
         passwordconfirm = (EditText) findViewById(R.id.editText7);
@@ -60,8 +60,8 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // final String email1 = email.getText().toString();
-                String namee = firstname.getText().toString();
-                String lastname = lname.getText().toString();
+                String namee = firstName.getText().toString();
+                String lastname = lastName.getText().toString();
                 String ageold = age.getText().toString();
                 String town = city.getText().toString();
                 String passw = password.getText().toString();
@@ -157,14 +157,14 @@ public class Register extends AppCompatActivity {
                             reference = FirebaseFirestore.getInstance().collection("Users");
                             Map<String, String> hashMap = new HashMap<String, String>();
                             hashMap.put("id", userid);
-                            hashMap.put("firstaname", firstname);
-                            hashMap.put("lname", lname);
+                            hashMap.put("firstName", firstname);
+                            hashMap.put("lastName", lname);
                             hashMap.put("age", age);
                             hashMap.put("city", city);
-                            hashMap.put("mobilephone", mobilephoneno);
+                            hashMap.put("mobilePhone", mobilephoneno);
                             hashMap.put("socialNumberId", socialNumberId);
                             hashMap.put("gender", genderu);
-                            hashMap.put("usertype", usertype);
+                            hashMap.put("userType", usertype);
 
 
                             reference.document(usertype).collection("Profiles").document().set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

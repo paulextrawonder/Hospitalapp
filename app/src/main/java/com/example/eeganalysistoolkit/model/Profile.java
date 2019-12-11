@@ -2,14 +2,14 @@ package com.example.eeganalysistoolkit.model;
 
 public class Profile {
     private String id;
-    private String firstaname;
-    private String lname;
+    private String firstName;
+    private String lastName;
     private String age;
     private String city;
     private String mobilePhone;
     private String socialNumberId;
     private String gender;
-    private String usertype;
+    private String userType;
 
     public String getId() {
         return id;
@@ -19,20 +19,20 @@ public class Profile {
         this.id = id;
     }
 
-    public String getFirstaname() {
-        return firstaname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstaname(String firstaname) {
-        this.firstaname = firstaname;
+    public void setFirstaname(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAge() {
@@ -51,12 +51,12 @@ public class Profile {
         this.city = city;
     }
 
-    public String getMobilePhone() {
+    public String getMobilephone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
+    public void setMobilephone(String mobilephone) {
+        this.mobilePhone = mobilephone;
     }
 
     public String getSocialNumberId() {
@@ -76,10 +76,10 @@ public class Profile {
     }
 
     public String getUsertype() {
-        return usertype;
+        return userType;
     }
 
     public void setUsertype(String usertype) {
-        this.usertype = usertype;
+        this.userType = usertype;
     }
 }
