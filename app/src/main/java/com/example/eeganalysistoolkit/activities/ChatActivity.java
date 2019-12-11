@@ -77,7 +77,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void getReferenceDataBase(String conversationId) {
 
-        datasRefChat = FirebaseFirestore.getInstance().collection("Chat").document().collection(conversationId);
+        datasRefChat = FirebaseFirestore.getInstance().collection("Chat").document("Conversation").collection(conversationId);
         datasRefUser = FirebaseFirestore.getInstance().collection("Users/Patient/profile/");
     }
 
