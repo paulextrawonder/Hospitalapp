@@ -33,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private RecyclerView mChatRecycler;
     FirebaseUser user;
+    private String receiverId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,17 @@ public class ChatActivity extends AppCompatActivity {
         manager.setStackFromEnd(true);
         mChatRecycler.setNestedScrollingEnabled(true);
         mChatRecycler.setLayoutManager(manager);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        receiverId = getIntent().getStringExtra("receiverId");
+        String typeUser = getIntent().getStringExtra("typeUser");
+        String conversationId;
+        if("Doctor".equals(typeUser)){
+            conversationId = receiverId+user.getUid();
+        }else {
+            conversationId = user.getUid()+receiverId;
+        }
+
+        datasRefChat.document().collection(conversationId);
         chatAdapter = new ChatAdapter(datasRefChat.orderBy("date"));
         mChatRecycler.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             public void onLayoutChange(View view, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -67,7 +79,7 @@ public class ChatActivity extends AppCompatActivity {
     private void getReferenceDataBase() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         datasRefChat = FirebaseFirestore.getInstance().collection("Chat");
-        datasRefUser = FirebaseFirestore.getInstance().collection("Users");
+        datasRefUser = FirebaseFirestore.getInstance().collection("Users/Patient/profile/");
     }
 
     public void onStart() {
@@ -87,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
         editText.setText("");
         FirebaseHelper helper = new FirebaseHelper();
 
-        Chat chat = new Chat(message, user.getUid(), "receiverId");
+        Chat chat = new Chat(message, user.getUid(), receiverId);
         if (helper.sendMessageChat(chat, datasRefChat)) {
             //sendNotif(message);
         }

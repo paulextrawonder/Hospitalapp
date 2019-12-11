@@ -22,6 +22,15 @@ public class DoctorDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_patient_dashboard);
         mLogout = (Button) findViewById(R.id.logout);
 
+        final Button chatButton = findViewById(R.id.chat_button);
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatIntent = new Intent(DoctorDashboard.this, UserListActivity.class);
+                chatIntent.putExtra("userType","Patient");
+                startActivity(chatIntent);
+            }
+        });
 
 
         mLogout.setOnClickListener(new View.OnClickListener() {

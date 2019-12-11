@@ -87,11 +87,12 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         mLogout = (Button) findViewById(R.id.logout);
 
 
-        Button chatButton = findViewById(R.id.chat_button);
+        final Button chatButton = findViewById(R.id.chat_button);
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent chatIntent = new Intent(PatientDashboard.this, UserListActivity.class);
+                chatIntent.putExtra("userType","Doctor");
                 startActivity(chatIntent);
             }
         });
@@ -113,154 +114,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         });
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
         //ChooseButton = (Button) findViewById(R.id.ButtonChooseImage);
-       // UploadButton = (Button) findViewById(R.id.ButtonUploadImage);
-        //SelectImage = (ImageView) findViewById(R.id.ShowImageView);
-       // progressDialog = new ProgressDialog(PatientDashboard.this);
 
-      // ChooseButton.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View v) {
-       //         Intent i = new Intent();
-       //         i.setAction(Intent.ACTION_GET_CONTENT);
-        //        i.setType("image/*");
-        //        startActivityForResult(i,75);
-         //   }
-       // });
-
-
-       /* ChooseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Creating intent.
-                Intent intent = new Intent();
-
-                // Setting intent type as image to select image from phone storage.
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
-
-            }
-        });
-        UploadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Calling method to upload selected image on Firebase storage.
-                UploadImageFileToFirebaseStorage();
-
-            }
-        });
-    }
-        public void UploadImageFileToFirebaseStorage () {
-
-            // Checking whether FilePathUri Is empty or not.
-            if (FilePathUri != null) {
-
-                // Setting progressDialog Title.
-                progressDialog.setTitle("Image is Uploading...");
-
-                // Showing progressDialog.
-                progressDialog.show();
-
-                // Creating second StorageReference.
-                StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
-
-                // Adding addOnSuccessListener to second StorageReference.
-                storageReference2nd.putFile(FilePathUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                // Getting image name from EditText and store into string variable.
-                                String TempImageName = ImageName.getText().toString().trim();
-
-                                // Hiding the progressDialog after done uploading.
-                                progressDialog.dismiss();
-
-                                // Showing toast message after done uploading.
-                                Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-
-                                @SuppressWarnings("VisibleForTests")
-                                ImageUploadInfo imageUploadInfo = new ImageUploadInfo(TempImageName, taskSnapshot.getDownloadUrl().toString());
-
-                                // Getting image upload ID.
-                                String ImageUploadId = databaseReference.push().getKey();
-
-                                // Adding image upload id s child element into databaseReference.
-                                databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-                            }
-                        })
-                        // If something goes wrong .
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-
-                                // Hiding the progressDialog.
-                                progressDialog.dismiss();
-
-                                // Showing exception erro message.
-                                Toast.makeText(PatientDashboard.this, exception.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        })
-
-                        // On progress change upload time.
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                // Setting progressDialog Title.
-                                progressDialog.setTitle("Image is Uploading...");
-
-                            }
-                        });
-            } else {
-
-                Toast.makeText(PatientDashboard.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
-            }
-
-
-        }
-
-        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
-
-            super.onActivityResult(requestCode, resultCode, data);
-
-            if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-                FilePathUri = data.getData();
-
-                try {
-
-                    // Getting selected image into Bitmap.
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
-
-                    // Setting up bitmap selected image into ImageView.
-                    SelectImage.setImageBitmap(bitmap);
-
-                    // After selecting image change choose button above text.
-                    ChooseButton.setText("Image Selected");
-
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        public String GetFileExtension (Uri uri){
-
-            ContentResolver contentResolver = getContentResolver();
-
-            MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-
-            // Returning the file Extension.
-            return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-
-        }
-
-*/
     }
     private void showFileChooser() {
         Intent intent = new Intent();
