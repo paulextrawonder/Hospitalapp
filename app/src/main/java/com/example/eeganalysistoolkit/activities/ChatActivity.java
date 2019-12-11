@@ -39,23 +39,22 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        getReferenceDataBase();
-        mChatRecycler = (RecyclerView) findViewById(R.id.message_list);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setStackFromEnd(true);
-        mChatRecycler.setNestedScrollingEnabled(true);
-        mChatRecycler.setLayoutManager(manager);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String conversationId;
         receiverId = getIntent().getStringExtra("receiverId");
         String typeUser = getIntent().getStringExtra("typeUser");
-        String conversationId;
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if("Doctor".equals(typeUser)){
             conversationId = receiverId+user.getUid();
         }else {
             conversationId = user.getUid()+receiverId;
         }
+        getReferenceDataBase(conversationId);
+        mChatRecycler = (RecyclerView) findViewById(R.id.message_list);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setStackFromEnd(true);
+        mChatRecycler.setNestedScrollingEnabled(true);
+        mChatRecycler.setLayoutManager(manager);
 
-        datasRefChat.document().collection(conversationId);
         chatAdapter = new ChatAdapter(datasRefChat.orderBy("date"));
         mChatRecycler.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             public void onLayoutChange(View view, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -76,9 +75,9 @@ public class ChatActivity extends AppCompatActivity {
         mChatRecycler.setAdapter(chatAdapter);
     }
 
-    private void getReferenceDataBase() {
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        datasRefChat = FirebaseFirestore.getInstance().collection("Chat");
+    private void getReferenceDataBase(String conversationId) {
+
+        datasRefChat = FirebaseFirestore.getInstance().collection("Chat").document().collection(conversationId);
         datasRefUser = FirebaseFirestore.getInstance().collection("Users/Patient/profile/");
     }
 
