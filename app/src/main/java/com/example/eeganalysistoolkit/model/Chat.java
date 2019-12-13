@@ -7,7 +7,7 @@ public class Chat {
     private String message;
     private String senderId;
     private String receiverId;
-    private Date messageTime;
+    private Date date;
 
     public Chat() {
     }
@@ -42,11 +42,11 @@ public class Chat {
         this.receiverId = receiverId;
     }
 
-    public Date getMessageTime() {
-        return messageTime;
+    public Date getDate() {
+        return date;
     }
 
-    public void setMessageTime(Date messageTime) {
-        this.messageTime = messageTime;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

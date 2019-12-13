@@ -1,4 +1,4 @@
-package com.example.eeganalysistoolkit.activities;
+package com.example.eeganalysistoolkit.adapter;
 
 import android.util.Log;
 

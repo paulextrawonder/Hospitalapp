@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.eeganalysistoolkit.R;
 import com.example.eeganalysistoolkit.adapter.ChatAdapter;
 import com.example.eeganalysistoolkit.model.Chat;
+import com.example.eeganalysistoolkit.model.Conversation;
 import com.example.eeganalysistoolkit.model.FirebaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,12 +35,13 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView mChatRecycler;
     FirebaseUser user;
     private String receiverId;
+    private String conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        String conversationId;
+
         receiverId = getIntent().getStringExtra("receiverId");
         String typeUser = getIntent().getStringExtra("typeUser");
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -78,7 +80,7 @@ public class ChatActivity extends AppCompatActivity {
     private void getReferenceDataBase(String conversationId) {
 
         datasRefChat = FirebaseFirestore.getInstance().collection("Chat").document("Conversation").collection(conversationId);
-        datasRefUser = FirebaseFirestore.getInstance().collection("Users/Patient/profile/");
+        datasRefUser = FirebaseFirestore.getInstance().collection("Users").document(receiverId).collection("Conversation");
     }
 
     public void onStart() {
@@ -100,6 +102,9 @@ public class ChatActivity extends AppCompatActivity {
 
         Chat chat = new Chat(message, user.getUid(), receiverId);
         if (helper.sendMessageChat(chat, datasRefChat)) {
+            Conversation conversation = new Conversation(conversationId,user.getUid(),receiverId);
+
+            datasRefUser.add(conversation);
             //sendNotif(message);
         }
 

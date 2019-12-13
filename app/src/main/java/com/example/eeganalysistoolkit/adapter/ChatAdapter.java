@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.eeganalysistoolkit.R;
-import com.example.eeganalysistoolkit.activities.FirestoreAdapter;
 import com.example.eeganalysistoolkit.model.Chat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,8 +55,9 @@ public class ChatAdapter extends FirestoreAdapter<ChatAdapter.NewChatHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewChatHolder holder, int position) {
-        holder.bind(getSnapshot(position));
-        sender = getSnapshot(position).getString("senderId");
+        Chat chat = getSnapshot(position).toObject(Chat.class);
+        holder.bind(chat);
+        sender = chat.getSenderId();
     }
 
 
@@ -73,15 +73,13 @@ public class ChatAdapter extends FirestoreAdapter<ChatAdapter.NewChatHolder> {
         }
 
 
-        void bind(final DocumentSnapshot snapshot) {
-
-            Chat chat = snapshot.toObject(Chat.class);
+        void bind(final Chat chat) {
             messageText.setText(chat.getMessage());
             //price.setText(String.valueOf(chat.ge()));
             // Format the stored timestamp into a readable String using method.
             Calendar cal = Calendar.getInstance();
-            if (chat.getMessageTime() != null) {
-                cal.setTime(chat.getMessageTime());
+            if (chat.getDate() != null) {
+                cal.setTime(chat.getDate());
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.FRENCH);
                 timeText.setText(String.valueOf(dateFormat.format(cal.getTime())));
 

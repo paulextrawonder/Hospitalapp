@@ -167,7 +167,7 @@ public class Register extends AppCompatActivity {
                             hashMap.put("userType", usertype);
 
 
-                            reference.document(usertype).collection("Profiles").document().set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            reference.document(userid).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
