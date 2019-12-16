@@ -1,22 +1,19 @@
 package com.example.eeganalysistoolkit.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.widget.Button;
-import android.text.TextUtils;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.eeganalysistoolkit.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-
-import android.view.View;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,17 +21,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class Register extends AppCompatActivity {
-    protected EditText username, firstName, lastName, age, password, passwordconfirm, city, mobilephoneno, socialNumberId, email;
-    protected RadioGroup genderu;
-    protected RadioGroup usertype;
     FirebaseAuth auth;
     CollectionReference reference;
-    protected Button register;
     RadioButton selectedRadioButton, selectedRadioButton1;
 
     @Override
@@ -42,19 +37,19 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         auth = FirebaseAuth.getInstance();
-        firstName = (EditText) findViewById(R.id.editText5);
-        lastName = (EditText) findViewById(R.id.editText6);
-        age = (EditText) findViewById(R.id.editText10);
-        password = (EditText) findViewById(R.id.editText4);
-        passwordconfirm = (EditText) findViewById(R.id.editText7);
-        city = (EditText) findViewById(R.id.editText9);
-        mobilephoneno = (EditText) findViewById(R.id.editText3);
-        socialNumberId = (EditText) findViewById(R.id.editText8);
-        email = (EditText) findViewById(R.id.editText2);
-        username = findViewById(R.id.editText11);
-        genderu = (RadioGroup) findViewById(R.id.genderu);
-        usertype = (RadioGroup) findViewById(R.id.usertype);
-        register = (Button) findViewById(R.id.button);
+        final EditText firstName = (EditText) findViewById(R.id.editText5);
+        final EditText lastName = (EditText) findViewById(R.id.editText6);
+        final EditText age = (EditText) findViewById(R.id.editText10);
+        final EditText password = (EditText) findViewById(R.id.editText4);
+        final EditText passwordconfirm = (EditText) findViewById(R.id.editText7);
+        final EditText city = (EditText) findViewById(R.id.editText9);
+        final EditText mobilephoneno = (EditText) findViewById(R.id.editText3);
+        final EditText socialNumberId = (EditText) findViewById(R.id.editText8);
+        final EditText email = (EditText) findViewById(R.id.editText2);
+        final EditText username = findViewById(R.id.editText11);
+        final RadioGroup genderu = (RadioGroup) findViewById(R.id.genderu);
+        final RadioGroup usertype = (RadioGroup) findViewById(R.id.usertype);
+        Button register = (Button) findViewById(R.id.button);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +107,7 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                if (mobile.length() > 9) {
+                if (mobile.length() > 10) {
                     Toast.makeText(Register.this, "Mobile phone number too long", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -132,20 +127,22 @@ public class Register extends AppCompatActivity {
                     return;
 
 
-                } else {
-                    register(namee, lastname, ageold, passw, copassw, town, mobile, social, emailm, user, selectedRadioButton.getText().toString(), selectedRadioButton1.getText().toString());
-
                 }
 
+                register(namee, lastname, ageold, passw, town, mobile, social, emailm, selectedRadioButton.getText().toString(), selectedRadioButton1.getText().toString());
             }
         });
 
 
     }
 
-    private void register(final String firstname, final String lname, final String age, final String password, final String passwordconfirm, final String city, final String mobilephoneno,
-                          final String socialNumberId, final String email, final String user, final String genderu, final String usertype) {
-        Toast.makeText(this, "" + firstname + "==" + lname + "==" + age + "" + password + "" + city + "" + mobilephoneno + "" + socialNumberId + "" + email + "" + genderu + "" + usertype + "", Toast.LENGTH_SHORT).show();
+    private void register(final String firstname, final String lname, final String age, final String password, final String city, final String mobilephoneno,
+                          final String socialNumberId, final String email, final String genderu, final String usertype) {
+        final ProgressBar progressBar = findViewById(R.id.progress);
+        final ScrollView container = findViewById(R.id.layout_register);
+        progressBar.setVisibility(View.VISIBLE);
+        container.setVisibility(View.GONE);
+
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -183,6 +180,8 @@ public class Register extends AppCompatActivity {
                         } else {
                             Toast.makeText(Register.this, "You can't  register with email or password", Toast.LENGTH_SHORT).show();
                             // return;
+                            container.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
                         }
 
 

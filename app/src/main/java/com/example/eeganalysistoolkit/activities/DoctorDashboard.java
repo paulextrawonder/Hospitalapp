@@ -1,7 +1,5 @@
 package com.example.eeganalysistoolkit.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,25 +7,23 @@ import android.widget.Button;
 
 import com.example.eeganalysistoolkit.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DoctorDashboard extends AppCompatActivity {
-    private Button mLogout;
-    // mLogout = (Button) findViewById(R.id.logout);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dashboard);
-        mLogout = (Button) findViewById(R.id.logout);
+        Button mLogout = (Button) findViewById(R.id.logout);
 
         final Button chatButton = findViewById(R.id.chat_button);
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent chatIntent = new Intent(DoctorDashboard.this, UserListActivity.class);
-                chatIntent.putExtra("userType","Patient");
+                chatIntent.putExtra("userType", "Patient");
                 startActivity(chatIntent);
             }
         });
@@ -36,9 +32,6 @@ public class DoctorDashboard extends AppCompatActivity {
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // isLoggingOut = true;
-
-                disconnectDriver();
 
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(DoctorDashboard.this, MainActivity.class);
@@ -49,25 +42,7 @@ public class DoctorDashboard extends AppCompatActivity {
         });
 
 
-
-
-
-
-
     }
-
-    private void disconnectDriver(){
-        // LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("doctorsAvailable");
-
-        //  GeoFire geoFire = new GeoFire(ref);
-        //  geoFire.removeLocation(userId);
-    }
-
-
-
-
 
 
 }

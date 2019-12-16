@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/backgroundforandroid"
@@ -11,19 +10,15 @@
     tools:context=".activities.Register">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textColor="#68bed2"
-        android:maxLines="1"
-        android:textSize="30sp"
-        android:text="Sign up" />
-
+   <ProgressBar
+       android:id="@+id/progress_register"
+       android:layout_centerInParent="true"
+       android:visibility="gone"
+       android:layout_width="70dp"
+       android:layout_height="70dp"/>
 
     <ScrollView
+        android:id="@+id/layout_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,6 +28,17 @@
             android:gravity="center"
             android:maxLines="1"
             android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textColor="#68bed2"
+                android:maxLines="1"
+                android:textSize="30sp"
+                android:text="Sign up" />
+
 
             <EditText
                 android:id="@+id/editText5"
@@ -224,4 +230,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

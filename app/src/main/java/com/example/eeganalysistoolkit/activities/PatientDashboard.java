@@ -33,27 +33,12 @@ import com.google.firebase.storage.UploadTask;
 import androidx.annotation.NonNull;
 
 
-
-
-
-
-
-
-public class PatientDashboard extends AppCompatActivity implements View.OnClickListener{
-    private Button mLogout;
-    // mLogout = (Button) findViewById(R.id.logout);
-// Folder path for Firebase Storage.
-    String Storage_Path = "All_Image_Uploads/";
+public class PatientDashboard extends AppCompatActivity implements View.OnClickListener {
 
     // Root Database Name for Firebase Database.
     String Database_Path = "All_Image_Uploads_Database";
-    EditText ImageName ;
-    ImageView SelectImage;
-    Uri FilePathUri;
-   // StorageReference storageReference;
+
     DatabaseReference databaseReference;
-    int Image_Request_Code = 7;
-    ProgressDialog progressDialog;
     private static final int PICK_IMAGE_REQUEST = 234;
     private Button buttonChoose;
     private Button buttonUpload;
@@ -84,7 +69,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
 
         //getting firebase storage reference
         storageReference = FirebaseStorage.getInstance();
-        mLogout = (Button) findViewById(R.id.logout);
+        Button mLogout = (Button) findViewById(R.id.logout);
 
 
         final Button chatButton = findViewById(R.id.chat_button);
@@ -92,7 +77,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Intent chatIntent = new Intent(PatientDashboard.this, UserListActivity.class);
-                chatIntent.putExtra("userType","Doctor");
+                chatIntent.putExtra("userType", "Doctor");
                 startActivity(chatIntent);
             }
         });
@@ -100,28 +85,24 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // isLoggingOut = true;
-
-                disconnectDriver();
-
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-                return;
             }
         });
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
         //ChooseButton = (Button) findViewById(R.id.ButtonChooseImage);
 
     }
+
     private void showFileChooser() {
         Intent intent = new Intent();
         intent.setType("text/plain");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select EDF File"), PICK_IMAGE_REQUEST);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -137,6 +118,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
             }
         }
     }
+
     private void uploadFile() {
         //if there is a file to upload
         if (filePath != null) {
@@ -145,7 +127,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
             progressDialog.setTitle("Uploading");
             progressDialog.show();
             StorageReference reference = storageReference.getReference();
-            StorageReference riversRef = reference.child("EDFfile/"+filePath.getLastPathSegment()+".edf");
+            StorageReference riversRef = reference.child("EDFfile/" + filePath.getLastPathSegment() + ".edf");
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -193,26 +175,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-        private void disconnectDriver () {
-            // LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patientsAvailable");
-
-            //  GeoFire geoFire = new GeoFire(ref);
-            //  geoFire.removeLocation(userId);
-        }
-
-    //@Override
+    @Override
     public void onClick(View view) {
         //if the clicked button is choose
         if (view == buttonChoose) {
@@ -225,7 +188,6 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
     }
 
 
-
-    }
+}
 
 

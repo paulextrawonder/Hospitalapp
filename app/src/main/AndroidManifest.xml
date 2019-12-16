@@ -28,9 +28,7 @@
         <activity android:name=".activities.DoctorDashboard" />
         <activity android:name=".activities.PatientDashboard" />
         <activity android:name=".activities.AdministratorDashboard" />
-        <activity android:name=".activities.AdministratorLoginActivity" />
-        <activity android:name=".activities.CustomerLoginActivity" />
-        <activity android:name=".activities.DriverLoginActivity" />
+        <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.Register" />
         <activity android:name=".model.Admin" />
         <activity android:name=".model.Patient" />

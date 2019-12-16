@@ -45,10 +45,10 @@ public class ChatActivity extends AppCompatActivity {
         receiverId = getIntent().getStringExtra("receiverId");
         String typeUser = getIntent().getStringExtra("typeUser");
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if("Doctor".equals(typeUser)){
-            conversationId = receiverId+user.getUid();
-        }else {
-            conversationId = user.getUid()+receiverId;
+        if ("Doctor".equals(typeUser)) {
+            conversationId = receiverId + user.getUid();
+        } else {
+            conversationId = user.getUid() + receiverId;
         }
         getReferenceDataBase(conversationId);
         mChatRecycler = (RecyclerView) findViewById(R.id.message_list);
@@ -102,7 +102,7 @@ public class ChatActivity extends AppCompatActivity {
 
         Chat chat = new Chat(message, user.getUid(), receiverId);
         if (helper.sendMessageChat(chat, datasRefChat)) {
-            Conversation conversation = new Conversation(conversationId,user.getUid(),receiverId);
+            Conversation conversation = new Conversation(conversationId, user.getUid(), receiverId);
 
             datasRefUser.add(conversation);
             //sendNotif(message);

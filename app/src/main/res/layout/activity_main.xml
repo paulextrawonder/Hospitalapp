@@ -55,49 +55,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Select user type"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#29b2d3"
 
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/patient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="70dp"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:text="I'm a patient" />
-
-            <Button
-                android:id="@+id/doctor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="70dp"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:text="I'm a doctor" />
-
-            <Button
-                android:id="@+id/admin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="70dp"
-                android:background="@drawable/button_bg_rounded_corners"
-                android:text="I'm an administrator" />
         </LinearLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/patient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/button_bg_rounded_corners"
+        android:layout_alignParentBottom="true"
+        android:text="I'm a patient" />
 </RelativeLayout>
