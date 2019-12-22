@@ -68,5 +68,5 @@
         android:layout_marginRight="70dp"
         android:background="@drawable/button_bg_rounded_corners"
         android:layout_alignParentBottom="true"
-        android:text="I'm a patient" />
+        android:text="Start" />
 </RelativeLayout>

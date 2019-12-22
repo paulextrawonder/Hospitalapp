@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         mPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDashboard(TestEDFActivity.class);
+                goToDashboard(LoginActivity.class);
             }
         });
 

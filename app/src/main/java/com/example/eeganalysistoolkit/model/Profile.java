@@ -6,10 +6,12 @@ public class Profile {
     private String lastName;
     private String age;
     private String city;
+    private String email;
     private String mobilePhone;
     private String socialNumberId;
     private String gender;
     private String userType;
+    private boolean isApproved;
 
     public String getId() {
         return id;
@@ -51,6 +53,14 @@ public class Profile {
         this.city = city;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getMobilephone() {
         return mobilePhone;
     }
@@ -81,5 +91,33 @@ public class Profile {
 
     public void setUsertype(String usertype) {
         this.userType = usertype;
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
     }
 }

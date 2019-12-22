@@ -29,6 +29,16 @@ public class AdministratorDashboard extends AppCompatActivity {
             }
         });
 
+        Button usersButton = findViewById(R.id.buttonUsers);
+        usersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent = new Intent(AdministratorDashboard.this,UserListActivity.class);
+                userIntent.putExtra("admin",true);
+                startActivity(userIntent);
+            }
+        });
+
 
     }
 

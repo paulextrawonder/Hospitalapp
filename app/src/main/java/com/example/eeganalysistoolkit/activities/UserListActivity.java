@@ -38,6 +38,7 @@ public class UserListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
         final ListView listView = findViewById(R.id.list_user);
+        final boolean isAdmin = getIntent().getBooleanExtra("admin",false);
         final CollectionReference reference = FirebaseFirestore.getInstance().collection("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DocumentReference docRef = reference.document(user.getUid());
@@ -57,7 +58,9 @@ public class UserListActivity extends AppCompatActivity {
                                 final List<Profile> profiles = queryDocumentSnapshots.toObjects(Profile.class);
                                 final List<String> listName  = new ArrayList<>();
                                 for(Profile profile : profiles){
-                                    if(!profile.getUsertype().equals(mProfile.getUsertype())){
+                                    if(isAdmin && !profile.isApproved()){
+                                        listName.add(profile.getFirstName() + " " + profile.getLastName());
+                                    } else if(!profile.getUsertype().equals(mProfile.getUsertype())){
                                         listName.add(profile.getFirstName() + " " + profile.getLastName());
                                     }
                                 }
@@ -68,10 +71,17 @@ public class UserListActivity extends AppCompatActivity {
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        Intent intent = new Intent(UserListActivity.this,ChatActivity.class);
-                                        intent.putExtra("receiverId",profiles.get(position).getId());
-                                        intent.putExtra("typeUser",profiles.get(position).getUsertype());
-                                        startActivity(intent);
+                                        if(isAdmin){
+                                            Intent intentDetail = new Intent(UserListActivity.this,ProfileDetailActivity.class);
+                                            intentDetail.putExtra("userId",profiles.get(position).getId());
+                                            startActivity(intentDetail);
+                                        }else {
+                                            Intent intent = new Intent(UserListActivity.this,ChatActivity.class);
+                                            intent.putExtra("receiverId",profiles.get(position).getId());
+                                            intent.putExtra("typeUser",profiles.get(position).getUsertype());
+                                            startActivity(intent);
+                                        }
+
                                     }
                                 });
                             }

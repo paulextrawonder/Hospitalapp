@@ -65,7 +65,7 @@ public class TestEDFActivity extends AppCompatActivity {
             Log.i("mkkk",""+data.getDataString());
             Log.i("mkkk",""+getFilesDir());
             String[] split = data.getDataString().split(":");
-            Log.i("mkkk",Environment.getExternalStorageDirectory()+split[1]);
+            Log.i("mkkk",Environment.getExternalStorageState()+split[1]);
             try {
                 test(Environment.getExternalStorageDirectory()+split[1]+".edf");
             } catch (IOException e) {

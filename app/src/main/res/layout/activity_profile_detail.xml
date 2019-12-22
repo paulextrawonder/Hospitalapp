@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/backgroundforandroid"
+    android:layout_height="match_parent"
+    tools:context=".activities.Register">
+
+
+    <ProgressBar
+        android:id="@+id/progress_register"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:layout_width="70dp"
+        android:layout_height="70dp"/>
+
+    <ScrollView
+        android:id="@+id/layout_register"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/txtFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10"
+                android:hint="@string/first_name" />
+            <TextView
+                android:id="@+id/txtLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10"
+                android:hint="@string/last_name" />
+
+            <TextView
+                android:hint="@string/email"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:id="@+id/txtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10" />
+
+
+            <TextView
+
+                android:hint="@string/phone_number"
+                android:drawableStart="@drawable/ic_phone_black_24dp"
+                android:id="@+id/txtPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10" />
+
+
+
+            <TextView
+
+                android:hint="@string/social_number_id"
+                android:id="@+id/txtSocielNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10" />
+            <TextView
+                android:hint="@string/city"
+                android:drawableStart="@drawable/ic_location_city_black_24dp"
+                android:id="@+id/txtCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10" />
+            <TextView
+
+                android:hint="@string/age"
+                android:id="@+id/txtAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ems="10" />
+
+
+            <TextView
+                android:id="@+id/txtGender"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/user_gender" />
+
+
+
+            <TextView
+                android:id="@+id/txtUserType"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/user_type" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_weight="1"
+            android:text="Approve User"
+            android:id="@+id/approvedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_weight="1"
+            android:text="Delete User"
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

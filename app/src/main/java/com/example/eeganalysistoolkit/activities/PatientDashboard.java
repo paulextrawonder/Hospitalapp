@@ -58,7 +58,7 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dashboard);
         //getting views from layout
-        buttonChoose = (Button) findViewById(R.id.buttonChoose);
+        buttonChoose = (Button) findViewById(R.id.buttonUsers);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
 
         imageView = (ImageView) findViewById(R.id.imageView);

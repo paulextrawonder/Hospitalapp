@@ -152,7 +152,7 @@ public class Register extends AppCompatActivity {
                             assert firebaseUser != null;
                             String userid = firebaseUser.getUid();
                             reference = FirebaseFirestore.getInstance().collection("Users");
-                            Map<String, String> hashMap = new HashMap<String, String>();
+                            Map<String, Object> hashMap = new HashMap<String, Object>();
                             hashMap.put("id", userid);
                             hashMap.put("firstName", firstname);
                             hashMap.put("lastName", lname);
@@ -162,6 +162,7 @@ public class Register extends AppCompatActivity {
                             hashMap.put("socialNumberId", socialNumberId);
                             hashMap.put("gender", genderu);
                             hashMap.put("userType", usertype);
+                            hashMap.put("approvedUser",false);
 
 
                             reference.document(userid).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
