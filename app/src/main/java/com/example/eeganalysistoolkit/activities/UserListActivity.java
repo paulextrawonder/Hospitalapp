@@ -58,9 +58,9 @@ public class UserListActivity extends AppCompatActivity {
                                 final List<Profile> profiles = queryDocumentSnapshots.toObjects(Profile.class);
                                 final List<String> listName  = new ArrayList<>();
                                 for(Profile profile : profiles){
-                                    if(isAdmin && !profile.isApproved()){
+                                    if(isAdmin && !profile.isApprovedUser()){
                                         listName.add(profile.getFirstName() + " " + profile.getLastName());
-                                    } else if(!profile.getUsertype().equals(mProfile.getUsertype())){
+                                    } else if(!profile.getUserType().equals(mProfile.getUserType())){
                                         listName.add(profile.getFirstName() + " " + profile.getLastName());
                                     }
                                 }
@@ -78,7 +78,7 @@ public class UserListActivity extends AppCompatActivity {
                                         }else {
                                             Intent intent = new Intent(UserListActivity.this,ChatActivity.class);
                                             intent.putExtra("receiverId",profiles.get(position).getId());
-                                            intent.putExtra("typeUser",profiles.get(position).getUsertype());
+                                            intent.putExtra("typeUser",profiles.get(position).getUserType());
                                             startActivity(intent);
                                         }
 

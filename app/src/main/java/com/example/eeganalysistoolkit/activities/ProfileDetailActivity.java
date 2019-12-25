@@ -26,14 +26,16 @@ public class ProfileDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_detail);
         String userId = getIntent().getStringExtra("userId");
-        final TextView txtFirestName,txtLastName,txtEmail,txtAge,txtGender,txtPhone,txtSocialNumber;
+        final TextView txtFirestName,txtLastName,txtEmail,txtAge,txtGender,txtPhone,txtSocialNumber,txtUserType,txtAprouved;
         txtFirestName = findViewById(R.id.txtFirstName);
         txtLastName = findViewById(R.id.txtLastName);
         txtEmail = findViewById(R.id.txtEmail);
         txtPhone = findViewById(R.id.txtPhone);
         txtAge = findViewById(R.id.txtAge);
         txtGender = findViewById(R.id.txtGender);
+        txtUserType = findViewById(R.id.txtUserType);
         txtSocialNumber = findViewById(R.id.txtSocielNumber);
+        txtAprouved = findViewById(R.id.txtAprouved);
         CollectionReference datasRefUser = FirebaseFirestore.getInstance().collection("Users");
         final DocumentReference docRef = datasRefUser.document(userId);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -49,6 +51,8 @@ public class ProfileDetailActivity extends AppCompatActivity {
                         txtAge.setText(profile.getAge());
                         txtGender.setText(profile.getGender());
                         txtSocialNumber.setText(profile.getSocialNumberId());
+                        txtUserType.setText(profile.getUserType());
+                        txtAprouved.setText(""+profile.isApprovedUser());
                     }
                 }
             }
@@ -77,6 +81,7 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 docRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        finish();
                         Toast.makeText(ProfileDetailActivity.this, "delete Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });

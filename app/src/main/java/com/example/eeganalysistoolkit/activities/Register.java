@@ -138,7 +138,7 @@ public class Register extends AppCompatActivity {
 
     private void register(final String firstname, final String lname, final String age, final String password, final String city, final String mobilephoneno,
                           final String socialNumberId, final String email, final String genderu, final String usertype) {
-        final ProgressBar progressBar = findViewById(R.id.progress);
+        final ProgressBar progressBar = findViewById(R.id.progress_register);
         final ScrollView container = findViewById(R.id.layout_register);
         progressBar.setVisibility(View.VISIBLE);
         container.setVisibility(View.GONE);

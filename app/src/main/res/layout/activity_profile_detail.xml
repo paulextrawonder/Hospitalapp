@@ -118,6 +118,27 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/user_type" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Approuved" />
+                <TextView
+                    android:id="@+id/txtAprouved"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1" />
+            </LinearLayout>
 
 
 

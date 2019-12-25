@@ -10,8 +10,9 @@ public class Profile {
     private String mobilePhone;
     private String socialNumberId;
     private String gender;
+    private String country;
     private String userType;
-    private boolean isApproved;
+    private boolean approvedUser;
 
     public String getId() {
         return id;
@@ -57,17 +58,18 @@ public class Profile {
         return email;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getMobilephone() {
-        return mobilePhone;
-    }
-
-    public void setMobilephone(String mobilephone) {
-        this.mobilePhone = mobilephone;
-    }
 
     public String getSocialNumberId() {
         return socialNumberId;
@@ -85,16 +87,13 @@ public class Profile {
         this.gender = gender;
     }
 
-    public String getUsertype() {
-        return userType;
+
+    public boolean isApprovedUser() {
+        return approvedUser;
     }
 
-    public void setUsertype(String usertype) {
-        this.userType = usertype;
-    }
-
-    public boolean isApproved() {
-        return isApproved;
+    public void setApprovedUser(boolean approvedUser) {
+        this.approvedUser = approvedUser;
     }
 
     public void setFirstName(String firstName) {
@@ -117,7 +116,4 @@ public class Profile {
         this.userType = userType;
     }
 
-    public void setApproved(boolean approved) {
-        isApproved = approved;
-    }
 }

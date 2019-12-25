@@ -45,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document != null && document.exists()) {
+
                             final Profile mProfile = document.toObject(Profile.class);
-                            if("Doctor".equals(mProfile.getUsertype())){
+                            if("Doctor".equals(mProfile.getUserType())){
                                 goToDashboard(DoctorDashboard.class);
-                            }else if("Admin".equals(mProfile.getUsertype())){
+                            }else if("Admin".equals(mProfile.getUserType())){
                                 goToDashboard(AdministratorDashboard.class);
-                            }else if("Patient".equals(mProfile.getUsertype())){
+                            }else if("Patient".equals(mProfile.getUserType())){
                                 goToDashboard(PatientDashboard.class);
                             }
                         }

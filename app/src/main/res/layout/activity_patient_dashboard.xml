@@ -9,14 +9,12 @@
     tools:context=".activities.PatientDashboard">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <TextView
+        android:text="Admin"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:text="userProfile"
-        android:theme="?attr/actionBarTheme" />
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
