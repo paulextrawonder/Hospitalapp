@@ -75,7 +75,7 @@ public class ChatAdapter extends FirestoreAdapter<ChatAdapter.NewChatHolder> {
 
         void bind(final Chat chat) {
             messageText.setText(chat.getMessage());
-            //price.setText(String.valueOf(chat.ge()));
+
             // Format the stored timestamp into a readable String using method.
             Calendar cal = Calendar.getInstance();
             if (chat.getDate() != null) {

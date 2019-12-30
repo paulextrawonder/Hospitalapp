@@ -71,7 +71,6 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
         storageReference = FirebaseStorage.getInstance();
         Button mLogout = (Button) findViewById(R.id.logout);
 
-
         final Button chatButton = findViewById(R.id.chat_button);
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +78,15 @@ public class PatientDashboard extends AppCompatActivity implements View.OnClickL
                 Intent chatIntent = new Intent(PatientDashboard.this, UserListActivity.class);
                 chatIntent.putExtra("userType", "Doctor");
                 startActivity(chatIntent);
+            }
+        });
+
+        Button settingBtn = findViewById(R.id.buttonSetting);
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this,SettingActivity.class);
+                 startActivity(intent);
             }
         });
 

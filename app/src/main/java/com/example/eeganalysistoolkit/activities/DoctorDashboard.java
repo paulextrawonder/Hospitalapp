@@ -41,6 +41,14 @@ public class DoctorDashboard extends AppCompatActivity {
             }
         });
 
+        Button settingBtn = findViewById(R.id.buttonSetting);
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoctorDashboard.this,SettingActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

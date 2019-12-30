@@ -43,6 +43,14 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <ImageButton
+            android:id="@+id/sendFileBtn"
+            android:background="@drawable/rounded_rectangle"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_attach"
+            android:layout_alignRight="@id/writeMessage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
         <Button
             android:id="@+id/sendMessage"
             android:onClick="sendMessageClick"
